@@ -104,6 +104,14 @@ App = {
         }
       },
 
+      createTask: async() => {
+        App.setLoading(true)
+        const content = $('#newTask').val()
+        // Specify the `from` field to avoid the error
+        await App.todoList.createTask(content, { from: App.account })
+        window.location.reload()
+    },
+      
     setLoading: (boolean) => {
         App.loading = boolean
         const loader = $('#loader')
